@@ -23,8 +23,6 @@ const menuItems = [
   { icon: Car, label: 'Vehicle Tracking', href: '/vehicle-tracking' },
   { icon: Cloud, label: 'Weather & IoT', href: '/weather-iot' },
   { icon: Users, label: 'Citizen Info', href: '/citizen' },
-  { icon: MapPin, label: 'GIS Mapping', href: '/gis' },
-  { icon: Activity, label: 'Analytics', href: '/analytics' },
 ]
 
 export default function Sidebar() {
