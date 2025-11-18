@@ -60,17 +60,21 @@ export default function CityMap() {
   return (
     <div className="aspect-video rounded-lg overflow-hidden border border-white/10 relative">
       <MapContainer
-        center={[13.7463, 100.5183]}
-        zoom={13}
-        scrollWheelZoom={true}
-        style={{ height: '100%', width: '100%' }}
-        className="z-0"
+        {...({
+          center: [13.7463, 100.5183],
+          zoom: 13,
+          scrollWheelZoom: true,
+          style: { height: '100%', width: '100%' },
+          className: 'z-0',
+        } as any)}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          {...({
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+          } as any)}
         />
-        
+
         {cameras.map((camera) => {
           // Create custom icon based on status
           const getMarkerColor = () => {
@@ -84,7 +88,7 @@ export default function CityMap() {
 
           if (typeof window !== 'undefined') {
             const L = require('leaflet')
-            
+
             const icon = L.divIcon({
               className: 'custom-marker',
               html: `
@@ -114,7 +118,13 @@ export default function CityMap() {
             })
 
             return (
-              <Marker key={camera.id} position={camera.position} icon={icon}>
+              <Marker
+                {...({
+                  key: camera.id,
+                  position: camera.position,
+                  icon: icon,
+                } as any)}
+              >
                 <Popup>
                   <div className="text-dark-900 p-2 min-w-[200px]">
                     <div className="flex items-center gap-2 mb-2">
@@ -132,8 +142,8 @@ export default function CityMap() {
                         {camera.status}
                       </span>
                     </div>
-                    <a 
-                      href="/vms" 
+                    <a
+                      href="/vms"
                       className="inline-block mt-2 text-xs text-blue-600 hover:text-blue-800 underline"
                     >
                       View Camera →
