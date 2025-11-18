@@ -10,54 +10,14 @@ import VideoPlayer from '@/components/ui/VideoPlayer'
 export default function VMSPage() {
   const [customUrl, setCustomUrl] = useState('')
   const [cameras, setCameras] = useState([
-    { 
-      id: 1, 
-      name: 'CAM-001', 
-      location: 'Main Street', 
-      status: 'online' as const, 
+    ...Array.from({ length: 6 }, (_, i) => ({
+      id: i + 1,
+      name: `NSS${String(i + 1).padStart(2, '0')}`,
+      location: `Location ${i + 1}`,
+      status: 'online' as const,
       alerts: 0,
-      videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
-    },
-    { 
-      id: 2, 
-      name: 'CAM-002', 
-      location: 'Central Park', 
-      status: 'online' as const, 
-      alerts: 2,
-      videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4'
-    },
-    { 
-      id: 3, 
-      name: 'CAM-003', 
-      location: 'Shopping Mall', 
-      status: 'online' as const, 
-      alerts: 0,
-      videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
-    },
-    { 
-      id: 4, 
-      name: 'CAM-004', 
-      location: 'Train Station', 
-      status: 'recording' as const, 
-      alerts: 1,
-      videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4'
-    },
-    { 
-      id: 5, 
-      name: 'CAM-005', 
-      location: 'City Hall', 
-      status: 'online' as const, 
-      alerts: 0,
-      videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4'
-    },
-    { 
-      id: 6, 
-      name: 'CAM-006', 
-      location: 'Highway 101', 
-      status: 'offline' as const, 
-      alerts: 3,
-      videoUrl: undefined
-    },
+      videoUrl: `https://streaming.noc.nakhoncity.org/live/NSS${String(i + 1).padStart(2, '0')}.m3u8`
+    }))
   ])
 
   const handleAddCustomUrl = (cameraId: number) => {
